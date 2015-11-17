@@ -7,20 +7,19 @@ class User < ActiveRecord::Base
   has_many :appointments
   validates :first_name, presence: true
   validates :last_name, presence: true
-
   validate :valid_rpps
-  validates_numericality_of :rpps
   validates :rpps, length: { is: 11 }
-
   validates :pseudo, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
-
+  validates :phone_number, presence: true, uniqueness: true, length: { is: 10 }
+  validates :contribution, presence: true
+  validates :first_install, presence: true
+  validates :role, presence: true
+  validates_numericality_of :rpps, :phone_number, :contribution
 
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :trackable, :validatable,
   :omniauthable, omniauth_providers: [:facebook]
-
-
 
   def self.find_for_facebook_oauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -54,12 +53,6 @@ class User < ActiveRecord::Base
       s2 += double
     end
     (s1 + s2) % 10 == 0
-  end
-
-  def validate_each(record, attribute, value)
-    unless value =~ /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
-      record.errors[attribute] << (options[:message] || "is not an email")
-    end
   end
 
 end
