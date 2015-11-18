@@ -1,4 +1,6 @@
 class AnnoncesController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @annonces = Annonce.all
   end
