@@ -13,3 +13,16 @@
 @import "components/index";
 @import "pages/index";
 @import "vendor/index";
+
+.jumbo {
+  background-image: url('./image.jpg');
+}
+
+.jumbo h1 {
+  color:white;
+  margin: 0 auto;
+}
+
+.accroche {
+  padding: 200px 0px;
+}
