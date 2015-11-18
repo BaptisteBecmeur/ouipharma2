@@ -2,15 +2,13 @@
   Liste de mes annonces favorites :
   <div class="row">
     <% @favs.each do |fav| %>
-<!--       <%= link_to(announce) do %>
- -->        <div class="col-xs-12 col-sm-6 col-md-3 text-center">
+    <div class="col-xs-12 col-sm-6 col-md-3 text-center">
           <h3><%= fav.annonce.title %></h3>
           <h2><%= fav.annonce.turnover %>€</h2>
-          <p><%= fav.annonce.description %></p>
-          <p><%= fav.annonce.address %></p>
+          <p><%= cl_image_tag fav.annonce.picture %></p>
+          <p><%= fav.annonce.city %></p>
 
         </div>
-<!--       <% end %> -->
     <% end %>
   </div>
 </div>

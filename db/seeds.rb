@@ -57,7 +57,7 @@ annonces = [
     environment: "Centre ville"
     },
     {
-      title: "Belle Pharmacie à Nice",
+      title: "Belle Pharmacie dans le centre de Nice",
       description: "Belle pharmacie dans le centre ville de Nice.
       Mur et appartement de 100 m2, à  vendre si besoin.
       Accompagnement pendant 1 mois après la cession si nécessaire
