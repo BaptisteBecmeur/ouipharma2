@@ -1,10 +1,26 @@
-<div class="jumbo">
-  <div class="container">
-    <div class="accroche text-center">
-      <h1>Cherchez et trouvez votre officine parmi nos annonces</h1>
-    </div>
+<div class="jumbo text-center">
+  <div class="accroche">
+    <h1>Cherchez et trouvez votre officine parmi nos annonces</h1>
+  </div>
+</div>
+
+<div class="text-center">
+  <h3>
+    Consultez nos annonces de pharmacies à vendre
+  </h3>
+</div>
+<div class="container">
+  <div class="row">
     <% @featured_announces.each do |announce| %>
-    <%= announce.title %>
+    <div class="col-md-4">
+      <h3>
+        <%= link_to(annonce) do %>
+        <%= annonce.title%>
+        <% end %>
+      </h3>
+      <%= cl_image_tag announce.picture, :width => 300, :height => 200, :crop => :fill%>
+    </div>
     <% end %>
   </div>
 </div>
+

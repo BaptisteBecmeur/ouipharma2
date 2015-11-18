@@ -1,31 +1,39 @@
-<h1> Annonces : </h1>
+<h1 class="text-center"> Annonces : </h1>
 
-<h2><% @annonces.each do |annonce|%>
-  <p> Title :
-    <%= annonce.title %>
-  </p>
-  <p>
-    <%= cl_image_tag annonce.picture, :width => 300, :height => 200, :crop => :fill %>
-  </p>
-  <p>
-    <%= link_to "Delete", annonce_path(annonce), method: :delete, data: { confirm: "Are you sure?" } %>
-  </p>
-  <p>
-    <%= link_to "Edit", edit_annonce_path(annonce) %>
-  </p>
-  <p> descriptions :
-    <%= annonce.description %>
-  </p>
+<div class="container">
+<div class="row">
+  <% @annonces.each do |annonce|%>
+    <div class="col-xs-12 col-md-4">
+        <h3>
+          Title :
+          <%= annonce.title %>
+        </h3>
 
-  <%= annonce.fav(current_user).inspect %>
-  <% if annonce.fav(current_user) %>
-    <%= link_to "Remove from favorite", fav_path(annonce.fav(current_user)), method: :delete %>
-  <% else %>
-    <%= link_to "Add as favorite", annonce_favs_path(annonce), method: :post %>
+
+          <%= cl_image_tag annonce.picture, :width => 300, :height => 200, :crop => :fill %>
+
+
+          <%= link_to "Delete", annonce_path(annonce), method: :delete, data: { confirm: "Are you sure?" } %>
+
+          <%= link_to "Edit", edit_annonce_path(annonce) %>
+
+        <p> descriptions :
+          <%= annonce.description %>
+        </p>
+
+        <%= annonce.fav(current_user).inspect %>
+        <% if annonce.fav(current_user) %>
+        <%= link_to "Remove from favorite", fav_path(annonce.fav(current_user)), method: :delete %>
+        <% else %>
+        <%= link_to "Add as favorite", annonce_favs_path(annonce), method: :post %>
+        <% end %>
+        <hr>
+      </div>
   <% end %>
+</div>
+</div>
 
 
 
-  <hr>
-  <% end %>
-</h2>
+
+
