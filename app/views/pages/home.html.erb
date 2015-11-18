@@ -11,14 +11,14 @@
 </div>
 <div class="container">
   <div class="row">
-    <% @featured_announces.each do |announce| %>
+    <% @featured_announces.each do |annonce| %>
     <div class="col-md-4">
       <h3>
         <%= link_to(annonce) do %>
         <%= annonce.title%>
         <% end %>
       </h3>
-      <%= cl_image_tag announce.picture, :width => 300, :height => 200, :crop => :fill%>
+      <%= cl_image_tag annonce.picture, :width => 350, :height => 200, :crop => :fill%>
     </div>
     <% end %>
   </div>

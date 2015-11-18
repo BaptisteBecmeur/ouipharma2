@@ -5,28 +5,32 @@
   <% @annonces.each do |annonce|%>
     <div class="col-xs-12 col-md-4">
         <h3>
-          Title :
           <%= annonce.title %>
         </h3>
+        <h2><%= annonce.turnover %>€</h2>
 
 
-          <%= cl_image_tag annonce.picture, :width => 300, :height => 200, :crop => :fill %>
 
 
-          <%= link_to "Delete", annonce_path(annonce), method: :delete, data: { confirm: "Are you sure?" } %>
+          <%= cl_image_tag annonce.picture, :width => 350, :height => 200, :crop => :fill %>
 
-          <%= link_to "Edit", edit_annonce_path(annonce) %>
+<p class="text-center", style="margin-top: 10px">
+            <%= link_to "Delete", annonce_path(annonce), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
 
-        <p> descriptions :
+          <%= link_to "Edit", edit_annonce_path(annonce), class: "btn btn-warning" %>
+          <% if annonce.fav(current_user) %>
+        <%= link_to "Remove from favorites", fav_path(annonce.fav(current_user)), method: :delete, class: "btn btn-danger" %>
+        <% else %>
+        <%= link_to "Add as favorite", annonce_favs_path(annonce), method: :post, class: "btn btn-success" %>
+        <% end %>
+</p>
+
+
+        <p>
           <%= annonce.description %>
         </p>
 
-        <%= annonce.fav(current_user).inspect %>
-        <% if annonce.fav(current_user) %>
-        <%= link_to "Remove from favorite", fav_path(annonce.fav(current_user)), method: :delete %>
-        <% else %>
-        <%= link_to "Add as favorite", annonce_favs_path(annonce), method: :post %>
-        <% end %>
+
         <hr>
       </div>
   <% end %>
