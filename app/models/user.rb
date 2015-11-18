@@ -7,15 +7,18 @@ class User < ActiveRecord::Base
   has_many :appointments
   validates :first_name, presence: true
   validates :last_name, presence: true
+
   validate :valid_rpps
-  validates :rpps, length: { is: 11 }
-  validates :pseudo, presence: true, uniqueness: true
+
+  # validates :rpps, length: { is: 11 }
+
+  validates :pseudo, uniqueness: true
   validates :email, presence: true, uniqueness: true
-  validates :phone_number, presence: true, uniqueness: true, length: { is: 10 }
-  validates :contribution, presence: true
-  validates :first_install, presence: true
-  validates :role, presence: true
-  validates_numericality_of :rpps, :phone_number, :contribution
+  # validates :phone_number, uniqueness: true, length: { is: 10 }
+  # validates :contribution, presence: true
+  # validates :first_install, presence: true
+  # validates :role, presence: true
+  # validates_numericality_of :rpps
 
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :trackable, :validatable,
@@ -23,6 +26,7 @@ class User < ActiveRecord::Base
 
   def self.find_for_facebook_oauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      byebug
       user.provider = auth.provider
       user.uid = auth.uid
       user.email = auth.info.email
@@ -36,6 +40,7 @@ class User < ActiveRecord::Base
   end
 
   def valid_rpps
+    # check if rpps is 11 length and is numeric
     if not is_valid_rpps(rpps)
       errors.add(:rpps, "is not a valid rpps number")
     end
