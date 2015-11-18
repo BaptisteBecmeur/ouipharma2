@@ -1,2 +1,10 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="jumbo">
+  <div class="container">
+    <div class="accroche text-center">
+      <h1>Cherchez et trouvez votre officine parmi nos annonces</h1>
+    </div>
+    <% @featured_announces.each do |announce| %>
+    <%= announce.title %>
+    <% end %>
+  </div>
+</div>
