@@ -1,36 +1,7 @@
 Rails.application.routes.draw do
-  namespace :users do
-  get 'users/index'
-  end
-
-  namespace :users do
-  get 'users/show'
-  end
-
-  namespace :users do
-  get 'users/new'
-  end
-
-  namespace :users do
-  get 'users/create'
-  end
-
-  namespace :users do
-  get 'users/edit'
-  end
-
-  namespace :users do
-  get 'users/update'
-  end
-
-  namespace :users do
-  get 'users/destroy'
-  end
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root to: 'pages#home'
-
-  resources :users
 
   resources :annonces
   # The priority is based upon order of creation: first created -> highest priority.
