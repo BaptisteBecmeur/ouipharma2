@@ -10,6 +10,8 @@
   <body>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
+    <%= link_to 'create an annonce', new_annonce_path %>
+    <%= link_to 'Annonces', annonces_path %>
     <%= yield %>
     <%= javascript_include_tag 'application' %>
   </body>
