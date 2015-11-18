@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
 
-  has_many :favoris
+  has_many :favs
   has_many :messages
   has_many :appointments
   validates :first_name, presence: true
@@ -26,7 +26,6 @@ class User < ActiveRecord::Base
 
   def self.find_for_facebook_oauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      byebug
       user.provider = auth.provider
       user.uid = auth.uid
       user.email = auth.info.email

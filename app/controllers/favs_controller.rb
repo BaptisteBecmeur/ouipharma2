@@ -2,7 +2,7 @@ class FavsController < ApplicationController
   before_action :set_annonce, only: [:create]
 
   def index
-    @favs = current_user.favoris.all
+    @favs = current_user.favs.all
   end
 
   # POST /annonces/:id/favs

@@ -4,8 +4,10 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :annonces do
-    resources :favs, only: [ :index, :create, :destroy ]
+    resources :favs, only: [ :create ]
   end
+
+  resources :favs, only: [ :index, :destroy ]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
