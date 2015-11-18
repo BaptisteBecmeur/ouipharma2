@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'favoris/index'
+
+  get 'favoris/show'
+
   namespace :users do
   get 'users/index'
   end

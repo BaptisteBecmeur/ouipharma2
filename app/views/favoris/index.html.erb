@@ -1,0 +1,16 @@
+<div class="container text-center">
+  Liste de mes annonces favorites :
+  <div class="row">
+    <% @favoris.annonces.each do |favoris| %>
+      <%= link_to(favoris) do %>
+        <div class="col-xs-12 col-sm-6 col-md-3 text-center">
+          <h3><%= favoris.annonce.title %></h3>
+          <p><%= favoris.annonce.description %></p>
+          <p><%= favoris.annonce.address %></p>
+          <h2><%= favoris.annonce.turnover %></h2>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
