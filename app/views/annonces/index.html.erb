@@ -16,6 +16,16 @@
   <p> descriptions :
     <%= annonce.description %>
   </p>
+
+  <%= annonce.fav(current_user).inspect %>
+  <% if annonce.fav(current_user) %>
+    <%= link_to "Remove from favorite", fav_path(annonce.fav(current_user)), method: :delete %>
+  <% else %>
+    <%= link_to "Add as favorite", annonce_favs_path(annonce), method: :post %>
+  <% end %>
+
+
+
   <hr>
   <% end %>
 </h2>

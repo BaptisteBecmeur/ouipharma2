@@ -3,7 +3,12 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root to: 'pages#home'
 
-  resources :annonces
+  resources :annonces do
+    resources :favs, only: [ :create ]
+  end
+
+  resources :favs, only: [ :index, :destroy ]
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

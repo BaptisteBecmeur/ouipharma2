@@ -1,0 +1,16 @@
+<div class="container text-center">
+  Liste de mes annonces favorites :
+  <div class="row">
+    <% @favs.each do |fav| %>
+      <%= link_to(fav) do %>
+        <div class="col-xs-12 col-sm-6 col-md-3 text-center">
+          <h3><%= fav.annonce.title %></h3>
+          <p><%= fav.annonce.description %></p>
+          <p><%= fav.annonce.address %></p>
+          <h2><%= fav.annonce.turnover %></h2>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
