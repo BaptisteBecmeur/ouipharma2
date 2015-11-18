@@ -1,0 +1,21 @@
+<h1> Annonces : </h1>
+
+<h2><% @annonces.each do |annonce|%>
+  <p> Title :
+    <%= annonce.title %>
+  </p>
+  <p>
+    <%= cl_image_tag annonce.picture, :width => 300, :height => 200, :crop => :fill %>
+  </p>
+  <p>
+    <%= link_to "Delete", annonce_path(annonce), method: :delete, data: { confirm: "Are you sure?" } %>
+  </p>
+  <p>
+    <%= link_to "Edit", edit_annonce_path(annonce) %>
+  </p>
+  <p> descriptions :
+    <%= annonce.description %>
+  </p>
+  <hr>
+  <% end %>
+</h2>
