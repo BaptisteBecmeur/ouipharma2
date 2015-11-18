@@ -14,8 +14,8 @@
     <% @featured_announces.each do |announce| %>
     <div class="col-md-4">
       <h3>
-        <%= link_to(annonce) do %>
-        <%= annonce.title%>
+        <%= link_to(announce) do %>
+        <%= announce.title%>
         <% end %>
       </h3>
       <%= cl_image_tag announce.picture, :width => 300, :height => 200, :crop => :fill%>
