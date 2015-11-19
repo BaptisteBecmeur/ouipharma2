@@ -63,3 +63,23 @@
 .home-title-annonce {
   height:100px;
 }
+
+.thumbnail {
+  padding:0px;
+  margin:0px;
+  box-shadow:0px 0px 5px #000;
+}
+
+.thumbnail > img {
+  margin:0px;
+  border: 0px solid;
+}
+
+.thumbnail-content {
+  padding:20px 4px;
+  font-size:20px;
+}
+
+.catchphrase {
+  padding:20px;
+}
