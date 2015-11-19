@@ -2,11 +2,13 @@
 
 <div class="container">
 
+
   <% if @search_city %>
-    <h3>Recherche pour <%= @search_city %></h3>
+  <h3>Recherche pour <%= @search_city %></h3>
   <% end %>
 
   <% if @annonces.size > 0 %>
+
 
   <div class="row">
     <% @annonces.each do |annonce|%>
@@ -15,6 +17,7 @@
         <%= annonce.title %>
       </h3>
       <h2><%= annonce.turnover %>€</h2>
+
       <%= cl_image_tag annonce.picture, :width => 350, :height => 200, :crop => :fill %>
 
       <p class="text-center", style="margin-top: 10px">
@@ -27,18 +30,21 @@
         <%= link_to "Add as favorite", annonce_favs_path(annonce), method: :post, class: "btn btn-success" %>
         <% end %>
       </p>
+
       <p>
         <%= annonce.description %>
       </p>
+
       <hr>
     </div>
     <% end %>
   </div>
 
+
   <div id="map" style="width: 100%; height: 600px;"></div>
 
   <% else %>
-    <h2>Pas de résultat pour cette recherche, essaye encore</h2>
+  <h2>Pas de résultat pour cette recherche, essaye encore</h2>
   <% end %>
   <h1>i'm the footer</h1>
 </div>
@@ -46,15 +52,16 @@
 
 
 
+
 <% content_for(:after_js) do %>
-  <script>
-    $(document).on('ready', function() {
-      handler = Gmaps.build('Google');
-      handler.buildMap({ internal: { id: 'map' } }, function(){
-        markers = handler.addMarkers(<%= raw @markers.to_json %>);
-        handler.bounds.extendWith(markers);
-        handler.fitMapToBounds();
-      });
-    })
-  </script>
+<script>
+$(document).on('ready', function() {
+  handler = Gmaps.build('Google');
+  handler.buildMap({ internal: { id: 'map' } }, function(){
+    markers = handler.addMarkers(<%= raw @markers.to_json %>);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+  });
+})
+</script>
 <% end %>

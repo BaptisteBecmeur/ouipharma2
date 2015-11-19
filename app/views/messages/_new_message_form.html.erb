@@ -1,0 +1,4 @@
+<%= simple_form_for [@annonce, @message] do |f| %>
+  <%= f.input :content, label: 'Votre message', error: 'Merci de compléter votre message', as: :text %>
+  <%= f.submit "Envoyer le message"%>
+<% end %>

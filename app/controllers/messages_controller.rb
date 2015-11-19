@@ -1,12 +1,16 @@
 class MessagesController < ApplicationController
-  before_action :set_annonce, only: [:create]
+  before_action :set_annonce, only: [:index, :create]
 
-  def index
-    @messages = current_user.messages.last(annonce: @annonce)
+  def conversations
+    @message = current_user.messages.last
+    @message.annonce = @annonce
+    @messages.group_by { |message| message.annonce }
+    # afficher toutes les conversations (avec les derniers messages de chaque annonce)
   end
 
-  def show
-    @messages = current_user.messages.all(annonce: @annonce)
+  def index
+    @message = Message.new
+    @messages = current_user.messages.where(annonce: @annonce)
   end
 
   # GET /annonces/:id/messages/new
@@ -16,9 +20,10 @@ class MessagesController < ApplicationController
 
   # POST /annonces/:id/messages
   def create
-    @message = current_user.messages.new(annonce: @annonce)
+    @message = current_user.messages.new(message_params) #params[:message]
+    @message.annonce = @annonce
     @message.save
-    redirect_to :back
+    redirect_to annonce_messages_path()
   end
 
   def destroy
@@ -31,5 +36,9 @@ class MessagesController < ApplicationController
 
   def set_annonce
     @annonce = Annonce.find(params[:annonce_id])
+  end
+
+  def message_params
+    params.require(:message).permit(:content)
   end
 end

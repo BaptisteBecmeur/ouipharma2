@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151119131429) do
+ActiveRecord::Schema.define(version: 20151119180150) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,9 +36,9 @@ ActiveRecord::Schema.define(version: 20151119131429) do
     t.string   "environment"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+    t.integer  "user_id"
     t.float    "latitude"
     t.float    "longitude"
-    t.integer  "user_id"
   end
 
   create_table "favs", force: :cascade do |t|
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20151119131429) do
     t.integer  "annonce_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "owner_id"
   end
 
   add_index "messages", ["annonce_id"], name: "index_messages_on_annonce_id", using: :btree

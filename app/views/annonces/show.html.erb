@@ -13,11 +13,9 @@
     <%= @annonce.description %>
   </p>
 
+
   <div>
-    <%= simple_form_for annonce_messages_path(@annonce) do |f| %>
-      <%= f.input :content, label: 'Votre message', error: 'Merci de compléter votre message', as: :text %>
-      <%= f.button :submit %>
-    <% end %>
+    <%= render 'messages/new_message_form' %>
   </div>
 
 </div>

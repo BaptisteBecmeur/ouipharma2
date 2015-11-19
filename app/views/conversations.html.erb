@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-3">
+      <h2><%= @annonce.title %></h2>
+      <h3><%= @annonce.turnover %>€</h3>
+      <p><%= cl_image_tag @annonce.picture %></p>
+      <p><%= @annonce.city %></p>
+    </div>
+
+    <div class="col-xs-12 col-sm-9">
+      <div class="media">
+        <div class="media-left">
+          <%= image_tag message.user.picture, class: "avatar" %>
+        </div>
+        <div class="media-body">
+          <p><%= @message.content %></p>
+        </div>
+      </div %>
+    </div>
+  </div>
+</div>
+
+

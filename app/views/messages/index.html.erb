@@ -1,22 +1,42 @@
-<div class="container text-center">
-  <h1>Voici la liste de vos messages</h1>
+<div class="container">
   <div class="row">
-    <% @favs.each do |fav| %>
-      <div class="col-xs-12 col-sm-6">
-        <h3><%= fav.annonce.title %></h3>
-        <h2><%= fav.annonce.turnover %>€</h2>
-        <p><%= cl_image_tag fav.annonce.picture %></p>
-        <p><%= fav.annonce.city %></p>
+    <div class="col-xs-12 col-sm-6">
+      <h3><%= @annonce.title %></h3>
+      <h2><%= @annonce.turnover %>€</h2>
+      <p><%= cl_image_tag @annonce.picture %></p>
+      <p><%= @annonce.city %></p>
+    </div>
+
+    <div class="col-xs-12 col-sm-6">
+      <%= render 'messages/new_message_form' %>
+      <% @annonce.messages.each do |message| %>
+      <% if message.user == current_user %>
+      <div class="media">
+        <div class="media-left">
+          <%= image_tag message.user.picture, class: "avatar" %>
+          <%= link_to message_path(message),
+          method: :delete,
+          data: { confirm: "Are you sure?" } do %>
+          <i class="text-right glyphicon glyphicon-trash"></i>
+          <% end %>
+        </div>
+        <div class="media-body">
+          <p><%= message.content %></p>
+        </div>
       </div>
-    <% end %>
-    <% @messages.each do |message| %>
-      <div class="col-xs-12 col-sm-6">
-        <h3><%= annonce.message.user_id %></h3>
-        <h2><%= fav.annonce.turnover %>€</h2>
-        <p><%= cl_image_tag fav.annonce.picture %></p>
-        <p><%= fav.annonce.city %></p>
+      <% else %>
+      <div class="media">
+        <div class="media-body">
+          <p><%= message.content %></p>
+        </div>
+        <div class="media-right">
+          <%= image_tag message.user.picture, class: "avatar" %>
+        </div>
       </div>
-    <% end %>
+      <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
+
 
