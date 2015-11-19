@@ -2,9 +2,10 @@ class MessagesController < ApplicationController
   before_action :set_annonce, only: [:index, :create]
 
   def conversations
-    # afficher toutes les conversation (avec les derniers messages de chaque annonce)
-    # => group by
-    # raise
+    @message = current_user.messages.last
+    @message.annonce = @annonce
+    @messages.group_by { |message| message.annonce }
+    # afficher toutes les conversations (avec les derniers messages de chaque annonce)
   end
 
   def index
