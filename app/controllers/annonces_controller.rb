@@ -2,8 +2,9 @@ class AnnoncesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    if params[:search][:city]
+    if params[:search] and not params[:search][:city].blank?
       @annonces = Annonce.near(params[:search][:city], 100)
+      @search_city = params[:search][:city]
     else
       @annonces = Annonce.all
     end
