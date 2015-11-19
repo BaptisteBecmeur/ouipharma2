@@ -7,6 +7,7 @@ class AnnoncesController < ApplicationController
 
   def show
     @annonce = Annonce.find(params[:id])
+    @message = Message.new
   end
 
   def new
@@ -15,6 +16,7 @@ class AnnoncesController < ApplicationController
 
   def create
     @annonce = Annonce.new(annonce_params)
+    @annonce.user_id = current_user.id
     if @annonce.save
       redirect_to annonces_path
     else

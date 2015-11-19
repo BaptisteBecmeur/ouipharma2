@@ -5,7 +5,9 @@ Rails.application.routes.draw do
 
   resources :annonces do
     resources :favs, only: [ :create ]
+    resources :messages, only: [ :new, :create, :show ]
   end
+
 
   resources :favs, only: [ :index, :destroy ]
 
