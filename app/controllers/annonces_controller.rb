@@ -3,6 +3,11 @@ class AnnoncesController < ApplicationController
 
   def index
     @annonces = Annonce.all
+
+    @markers = Gmaps4rails.build_markers(@annonces) do |annonce, marker|
+      marker.lat annonce.latitude
+      marker.lng annonce.longitude
+    end
   end
 
   def show

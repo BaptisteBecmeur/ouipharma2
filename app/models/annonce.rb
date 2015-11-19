@@ -4,6 +4,8 @@ class Annonce < ActiveRecord::Base
   has_many :appointments
   validates :title, presence: true, uniqueness: true, length: { in: 15..60 }
   validates :description, presence: true, uniqueness: true, length: { in: 150..500 }
+  geocoded_by :city
+  # after_validation :geocoder, if: :address_changed?
   # validates :address, presence: true, uniqueness: true
   # validates :region, :department, :city, :turnover, :margin, :total_area, presence: true
   # has_attached_file :picture,
