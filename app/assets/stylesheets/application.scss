@@ -15,20 +15,47 @@
 @import "vendor/index";
 
 .jumbo {
-  background-image: url('./image.jpg');
+  background-image: url('./Pharma.jpg');
+  background-position: center;
+  position:relative;
+  &-filter {
+    background: rgba(#7474BF, 0.4);
+    background: -webkit-linear-gradient(to left, rgba(#7474BF, 0.4) , rgba(#348AC7, 0.4));
+    background: linear-gradient(to left, rgba(#7474BF, 0.4) , rgba(#348AC7, 0.4) );
+  }
 }
 
-.jumbo h1 {
+.accroche h1 {
   color:white;
   margin: 0 auto;
+  font-family: 'Roboto', sans-serif;
 }
 
 .accroche {
-  padding: 250px 0px;
+  padding: 200px 0px;
+  text-shadow: 0px 0px 20px #000;
 }
 
 #map {
   display: flex;
   height: 100vh;
   width: 100%;
+}
+
+.searchbar {
+  padding:30px 0px;
+  background-color: rgba(#000, 0.7);
+}
+
+.form-inline .form-control {
+    display: inline-block;
+    width: 100%;
+}
+
+.btn-primary {
+  font-family: 'Roboto', sans-serif;
+}
+
+.placeholder-font {
+  font-family: 'Roboto', sans-serif;
 }
