@@ -9,7 +9,14 @@ gem 'devise'
 gem 'omniauth-facebook'
 gem 'cloudinary'
 gem 'carrierwave'
+gem 'geocoder'
 
+
+gem 'coffee-rails'
+gem 'gmaps4rails'
+source 'https://rails-assets.org' do
+  gem "rails-assets-underscore"
+end
 gem 'sass-rails', '~> 5.0'
 gem 'jquery-rails'
 gem 'uglifier'

@@ -5,15 +5,15 @@ class User < ActiveRecord::Base
   has_many :favs
   has_many :messages
   has_many :appointments
-  validates :first_name, presence: true
-  validates :last_name, presence: true
+  # validates :first_name, presence: true
+  # validates :last_name, presence: true
 
   validate :valid_rpps
 
   # validates :rpps, length: { is: 11 }
 
-  validates :pseudo, uniqueness: true
-  validates :email, presence: true, uniqueness: true
+  # validates :pseudo, uniqueness: true
+  # validates :email, presence: true, uniqueness: true
   # validates :phone_number, uniqueness: true, length: { is: 10 }
   # validates :contribution, presence: true
   # validates :first_install, presence: true

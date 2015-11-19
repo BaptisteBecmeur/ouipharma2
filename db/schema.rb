@@ -37,6 +37,8 @@ ActiveRecord::Schema.define(version: 20151119131429) do
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.integer  "user_id"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   create_table "favs", force: :cascade do |t|

@@ -2,6 +2,7 @@ class Annonce < ActiveRecord::Base
   has_many :favs
   has_many :messages
   has_many :appointments
+  belongs_to :user
   validates :title, presence: true, uniqueness: true, length: { in: 15..60 }
   validates :description, presence: true, uniqueness: true, length: { in: 150..500 }
   # validates :address, presence: true, uniqueness: true
