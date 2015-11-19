@@ -15,6 +15,7 @@ class AnnoncesController < ApplicationController
 
   def create
     @annonce = Annonce.new(annonce_params)
+    @annonce.user_id = current_user.id
     if @annonce.save
       redirect_to annonces_path
     else
