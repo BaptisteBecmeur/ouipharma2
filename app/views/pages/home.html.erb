@@ -29,10 +29,12 @@
       <% @featured_announces.each do |announce| %>
       <div class="col-md-4">
         <div class="thumbnail text-center">
+          <%= cl_image_tag announce.picture, :width => 380, :crop => :fill%>
           <%= link_to(announce) do %>
-          <%= announce.title%>
+          <div class="thumbnail-content">
+            <%= announce.title%>
+          </div>
           <% end %>
-          <%= cl_image_tag announce.picture, :width => 350, :height => 200, :crop => :fill%>
         </div>
       </div>
       <% end %>
