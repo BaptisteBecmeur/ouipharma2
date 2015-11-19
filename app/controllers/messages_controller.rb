@@ -9,6 +9,11 @@ class MessagesController < ApplicationController
     @messages = current_user.messages.all(annonce: @annonce)
   end
 
+  # GET /annonces/:id/messages/new
+  def new
+    @message = Message.new
+  end
+
   # POST /annonces/:id/messages
   def create
     @message = current_user.messages.new(annonce: @annonce)

@@ -1,17 +1,13 @@
 Rails.application.routes.draw do
 
-  get 'messages/index'
-
-  get 'messages/show'
-
-  get 'messages/new'
-
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root to: 'pages#home'
 
   resources :annonces do
     resources :favs, only: [ :create ]
+    resources :messages, only: [ :new, :create, :show ]
   end
+
 
   resources :favs, only: [ :index, :destroy ]
 

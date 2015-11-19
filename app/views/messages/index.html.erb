@@ -1,2 +1,22 @@
-<h1>Messages#index</h1>
-<p>Find me in app/views/messages/index.html.erb</p>
+<div class="container text-center">
+  <h1>Voici la liste de vos messages</h1>
+  <div class="row">
+    <% @favs.each do |fav| %>
+      <div class="col-xs-12 col-sm-6">
+        <h3><%= fav.annonce.title %></h3>
+        <h2><%= fav.annonce.turnover %>€</h2>
+        <p><%= cl_image_tag fav.annonce.picture %></p>
+        <p><%= fav.annonce.city %></p>
+      </div>
+    <% end %>
+    <% @messages.each do |message| %>
+      <div class="col-xs-12 col-sm-6">
+        <h3><%= annonce.message.user_id %></h3>
+        <h2><%= fav.annonce.turnover %>€</h2>
+        <p><%= cl_image_tag fav.annonce.picture %></p>
+        <p><%= fav.annonce.city %></p>
+      </div>
+    <% end %>
+  </div>
+</div>
+

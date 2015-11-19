@@ -7,6 +7,7 @@ class AnnoncesController < ApplicationController
 
   def show
     @annonce = Annonce.find(params[:id])
+    @message = Message.new
   end
 
   def new

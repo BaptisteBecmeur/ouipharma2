@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151119105013) do
+ActiveRecord::Schema.define(version: 20151119131429) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20151119105013) do
     t.string   "environment"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
-    t.string   "user_id"
+    t.integer  "user_id"
   end
 
   create_table "favs", force: :cascade do |t|
@@ -50,12 +50,15 @@ ActiveRecord::Schema.define(version: 20151119105013) do
   add_index "favs", ["user_id"], name: "index_favs_on_user_id", using: :btree
 
   create_table "messages", force: :cascade do |t|
-    t.string   "index"
-    t.string   "show"
-    t.string   "new"
+    t.string   "content"
+    t.integer  "user_id"
+    t.integer  "annonce_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "messages", ["annonce_id"], name: "index_messages_on_annonce_id", using: :btree
+  add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -91,4 +94,6 @@ ActiveRecord::Schema.define(version: 20151119105013) do
 
   add_foreign_key "favs", "annonces"
   add_foreign_key "favs", "users"
+  add_foreign_key "messages", "annonces"
+  add_foreign_key "messages", "users"
 end
