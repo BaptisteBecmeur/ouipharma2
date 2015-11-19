@@ -2,9 +2,15 @@ class AnnoncesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @annonces = Annonce.all
+    if params[:search][:city]
+      @annonces = Annonce.near(params[:search][:city], 100)
+    else
+      @annonces = Annonce.all
+    end
+    @annonces_map = @annonces.where("latitude is not null and longitude is not null")
 
-    @markers = Gmaps4rails.build_markers(@annonces) do |annonce, marker|
+
+    @markers = Gmaps4rails.build_markers(@annonces_map) do |annonce, marker|
       marker.lat annonce.latitude
       marker.lng annonce.longitude
     end

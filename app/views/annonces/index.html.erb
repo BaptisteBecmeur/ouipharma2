@@ -38,12 +38,24 @@
 </div>
 
 <div class="container">
-  <h1>ICI SEARCH BAR</h1>
+  <%= simple_form_for :search, url: annonces_path, method: :get do |f| %>
+    <%= f.input :city %>
+    <%= f.submit "Search" %>
+  <% end %>
 </div>
 
 <div class="container">
   <div id="map" style="width: 100%; height: 600px;"></div>
-  <% content_for(:after_js) do %>
+</div>
+
+<div class="container">
+  <h1>i'm the footer</h1>
+</div>
+
+
+
+
+<% content_for(:after_js) do %>
   <script>
     $(document).on('ready', function() {
       handler = Gmaps.build('Google');
@@ -54,14 +66,4 @@
       });
     })
   </script>
-  <% end %>
-</div>
-
-<div class="container">
-  <h1>i'm the footer</h1>
-</div>
-
-
-
-
-
+<% end %>
