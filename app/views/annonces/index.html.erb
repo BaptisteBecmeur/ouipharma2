@@ -37,7 +37,33 @@
 </div>
 </div>
 
+<div class="container">
+  <%= simple_form_for :search, url: annonces_path, method: :get do |f| %>
+    <%= f.input :city %>
+    <%= f.submit "Search" %>
+  <% end %>
+</div>
+
+<div class="container">
+  <div id="map" style="width: 100%; height: 600px;"></div>
+</div>
+
+<div class="container">
+  <h1>i'm the footer</h1>
+</div>
 
 
 
 
+<% content_for(:after_js) do %>
+  <script>
+    $(document).on('ready', function() {
+      handler = Gmaps.build('Google');
+      handler.buildMap({ internal: { id: 'map' } }, function(){
+        markers = handler.addMarkers(<%= raw @markers.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+      });
+    })
+  </script>
+<% end %>
