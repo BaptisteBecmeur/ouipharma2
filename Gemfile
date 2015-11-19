@@ -11,7 +11,6 @@ gem 'cloudinary'
 gem 'carrierwave'
 gem 'geocoder'
 
-
 gem 'coffee-rails'
 gem 'gmaps4rails'
 source 'https://rails-assets.org' do
@@ -38,3 +37,5 @@ group :production do
   gem 'rails_12factor'
   gem 'puma'
 end
+
+

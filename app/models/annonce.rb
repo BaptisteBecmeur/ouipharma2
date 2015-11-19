@@ -5,6 +5,8 @@ class Annonce < ActiveRecord::Base
   belongs_to :user
   validates :title, presence: true, uniqueness: true, length: { in: 15..60 }
   validates :description, presence: true, uniqueness: true, length: { in: 150..500 }
+  geocoded_by :city
+  after_validation :geocode
   # validates :address, presence: true, uniqueness: true
   # validates :region, :department, :city, :turnover, :margin, :total_area, presence: true
   # has_attached_file :picture,

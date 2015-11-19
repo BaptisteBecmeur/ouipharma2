@@ -55,44 +55,53 @@ annonces = [
     parking: false,
     walls: false,
     environment: "Centre ville"
-    },
-    {
-      title: "Belle Pharmacie dans le centre de Nice",
-      description: "Belle pharmacie dans le centre ville de Nice.
-      Mur et appartement de 100 m2, à  vendre si besoin.
-      Accompagnement pendant 1 mois après la cession si nécessaire
-      Aménagement récent et de qualité
-      Fermeture annuelle de 10 jours pendant l’été",
-      picture: "http://www.ouipharma.fr/wp-content/uploads/Pharmacie-a-vendre-9.gif",
-      region: "PACA",
-      department: "Alpes-Maritimes",
-      city: "Nice",
-      address: "18 allées de Chartres",
-      turnover: "960000€",
-      margin: "30,4%",
-      payroll: "33000€",
-      team: "1 préparatrice à temps partiel",
-      total_area: "120m2",
-      sales_area: "45m2",
-      healthcare_setting: "5 médecins, 2 dentistes, 2 dermatologues",
-      parking: true,
-      walls: true,
-      environment: "Centre ville"
-    }
-    ]
+  },
+  {
+    title: "Belle Pharmacie dans le centre de Nice",
+    description: "Belle pharmacie dans le centre ville de Nice.
+    Mur et appartement de 100 m2, à  vendre si besoin.
+    Accompagnement pendant 1 mois après la cession si nécessaire
+    Aménagement récent et de qualité
+    Fermeture annuelle de 10 jours pendant l’été",
+    picture: "http://www.ouipharma.fr/wp-content/uploads/Pharmacie-a-vendre-9.gif",
+    region: "PACA",
+    department: "Alpes-Maritimes",
+    city: "Nice",
+    address: "18 allées de Chartres",
+    turnover: "960000€",
+    margin: "30,4%",
+    payroll: "33000€",
+    team: "1 préparatrice à temps partiel",
+    total_area: "120m2",
+    sales_area: "45m2",
+    healthcare_setting: "5 médecins, 2 dentistes, 2 dermatologues",
+    parking: true,
+    walls: true,
+    environment: "Centre ville"
+  }
+]
 
-      annonces.each do |annonce|
-        Annonce.create( title: annonce[:title], description: annonce[:description],
-          remote_picture_url: annonce[:picture], region: annonce[:region],
-          department: annonce[:department], address: annonce[:address],
-          city: annonce[:city], turnover: annonce[:turnover],
-          margin: annonce[:margin], payroll: annonce[:payroll],
-          team: annonce[:team], total_area: annonce[:total_area],
-          sales_area: annonce[:sales_area], healthcare_setting: annonce[:healthcare_setting],
-          parking: annonce[:parking], walls: annonce[:walls],
-          environment: annonce[:environment]
-          )
-      end
+annonces.each do |annonce|
+  Annonce.create(
+    title: annonce[:title],
+    description: annonce[:description],
+    remote_picture_url: annonce[:picture],
+    region: annonce[:region],
+    department: annonce[:department],
+    address: annonce[:address],
+    city: annonce[:city],
+    turnover: annonce[:turnover],
+    margin: annonce[:margin],
+    payroll: annonce[:payroll],
+    team: annonce[:team],
+    total_area: annonce[:total_area],
+    sales_area: annonce[:sales_area],
+    healthcare_setting: annonce[:healthcare_setting],
+    parking: annonce[:parking],
+    walls: annonce[:walls],
+    environment: annonce[:environment]
+  )
+end
 
 
 
