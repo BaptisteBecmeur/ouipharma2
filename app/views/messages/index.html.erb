@@ -3,7 +3,7 @@
     <div class="col-xs-12 col-sm-6">
       <h3><%= @annonce.title %></h3>
       <h2><%= @annonce.turnover %>€</h2>
-      <p><%= cl_image_tag @annonce.picture %></p>
+      <p><%= cl_image_tag @annonce.picture, :width => 300, :height => 200, :crop => :fill %></p>
       <p><%= @annonce.city %></p>
     </div>
 

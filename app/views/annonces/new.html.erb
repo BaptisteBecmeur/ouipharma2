@@ -1,15 +1,29 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-4 col-md-offset-4">
+  <div class="row ">
+    <h1 class="text-center">Créez votre annonce en quelques clics</h1>
+    <div class="col-md-6 col-md-offset-3">
       <%= simple_form_for(@annonce) do |f| %>
       <%= f.error_notification %>
-      <%= f.input :title %>
-      <%= f.input :description %>
+      <%= f.input :title, label: 'Titre de votre annonce', placeholder: "ex: Pharmacie à fort potentiel - Gironde" %>
+      <%= f.input :description, label: 'Description (150 à 500 caractères)', placeholder: "Décrivez au mieux votre officine et son environnement.", as: :text %>
       <%= f.input :picture %>
-      <%= f.button :submit ,class: "btn btn-primary"%>
+      <%= f.input :turnover,  label: "Chiffre d'affaires des 12 derniers mois", placeholder: "Saisir un entier sans point, ni virgule, ni symbole" %>
+      <%= f.input :margin, label: 'Marge de votre officine (en %)', placeholder: "ex: 28,9" %>
+      <%= f.input :city, label: 'Ville', placeholder: "ex: Mérignac" %>
+      <%= f.input :payroll, label: 'Masse salariale', placeholder: "Saisir un entier, sans point, ni virgule ni symbole" %>
+      <%= f.input :team, label: 'Equipe officinale', placeholder: "ex : 2 préparatrices à mi-temps, 1 assistant à temps plein, 1 femme de ménage", as: :text %>
+      <%= f.input :total_area, label: "Surface totale de la pharmacie", placeholder: "ex: 250 m2" %>
+      <%= f.input :sales_area, label: "Surface de vente", placeholder: "ex: 120 m2" %>
+      <%= f.input :healthcare_setting, label: "Environnement médical de l'officine", placeholder: "ex: 3 médecins généralistes, 2 pédiatres, 1 kinésithérapeute", as: :text %>
+      <%= f.input :parking, label: "Ma pharmacie possède un parking", as: :boolean, checked_value: true, unchecked_value: false %>
+      <%= f.input :parking, label: "Je souhaite vendre les murs de ma pharmacie", as: :boolean, checked_value: true, unchecked_value: false %>
+      <%= f.input :environment, label: "Environnement", collection: [ "Urbain", "Semi-urbain", "Centre-ville", "Centre-commercial", "Rural"], prompt: "Choisissez un type d'officine" %>
+      <%= f.button :submit, class: "btn btn-primary btn-lg"%>
       <% end %>
     </div>
   </div>
 </div>
-
-
+<br>
+<br>
+<br>
+<br
