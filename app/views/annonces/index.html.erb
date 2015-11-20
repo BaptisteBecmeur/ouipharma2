@@ -1,53 +1,48 @@
-<h1 class="text-center"> Annonces : </h1>
-
-<div class="container">
 
 
-  <% if @search_city %>
-  <h3>Recherche pour <%= @search_city %></h3>
-  <% end %>
-
-  <% if @annonces.size > 0 %>
-
-
-  <div class="row">
-    <% @annonces.each do |annonce|%>
-    <div class="col-xs-12 col-md-4">
-      <h3>
-        <%= annonce.title %>
-      </h3>
-      <h2><%= annonce.turnover %>€</h2>
-
-      <%= cl_image_tag annonce.picture, :width => 350, :height => 200, :crop => :fill %>
-
-      <p class="text-center", style="margin-top: 10px">
-        <%= link_to "Delete", annonce_path(annonce), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
-
-        <%= link_to "Edit", edit_annonce_path(annonce), class: "btn btn-warning" %>
-        <% if annonce.fav(current_user) %>
-        <%= link_to "Remove from favorites", fav_path(annonce.fav(current_user)), method: :delete, class: "btn btn-danger" %>
-        <% else %>
-        <%= link_to "Add as favorite", annonce_favs_path(annonce), method: :post, class: "btn btn-success" %>
+<% if @annonces.size > 0 %>
+<div class="flex">
+  <div class="left">
+    <div class="header text-center">
+      <div class="header-left">
+        <% if @search_city %>
+        Recherche pour <strong><%= @search_city %></strong>
         <% end %>
-      </p>
-
+      </div>
+      <div class="searchbar-index-annonces">
+        <%= simple_form_for :search, :html => { :class => 'form-inline' }, url: annonces_path, method: :get do |f| %>
+        <%= f.input :city, placeholder: 'Faire une nouvelle recherche', class: 'placeholder-font', label: false, :input_html => { :size => 15} %>
+        <%= f.submit "Rechercher", class: 'btn btn-primary' %>
+        <% end %>
+      </div>
+    </div>
+    <div class="content">
+      <% @annonces.each do |annonce|%>
+      <h3><%= annonce.title %></h3>
+      <h2><%= annonce.turnover %>€</h2>
+      <%= cl_image_tag annonce.picture, :width => 350, :height => 200, :crop => :fill %>
       <p>
         <%= annonce.description %>
       </p>
-
       <hr>
+      <% end %>
     </div>
-    <% end %>
   </div>
-
-
-  <div id="map" style="width: 100%; height: 600px;"></div>
-
-  <% else %>
-  <h2>Pas de résultat pour cette recherche, essaye encore</h2>
-  <% end %>
-  <h1>i'm the footer</h1>
+  <div class="right">
+    <div id="map" style="width: 100%; height: 600px;"></div>
+  </div>
 </div>
+<% else %>
+<div class="else text-center">
+  <h2>Pas de résultat pour cette recherche, essaye encore</h2>
+  <%= simple_form_for :search, :html => { :class => 'form-inline' }, url: annonces_path, method: :get do |f| %>
+  <%= f.input :city, placeholder: 'Faire une nouvelle recherche', class: 'placeholder-font', label: false, :input_html => { :size => 40} %>
+  <%= f.submit "Rechercher", class: 'btn btn-primary' %>
+
+  <% end %>
+</div>
+<% end %>
+
 
 
 
@@ -57,7 +52,7 @@
 <script>
 $(document).on('ready', function() {
   handler = Gmaps.build('Google');
-  handler.buildMap({ internal: { id: 'map' } }, function(){
+  handler.buildMap({ provider: { scrollwheel: false }, internal: { id: 'map' } }, function(){
     markers = handler.addMarkers(<%= raw @markers.to_json %>);
     handler.bounds.extendWith(markers);
     handler.fitMapToBounds();
