@@ -87,3 +87,58 @@
 .navbar-wagon-logo {
     width: 200px;
 }
+
+
+// start index annonces show
+.left {
+  position: fixed;
+  top: 140px;
+  left: 0;
+  bottom: 0;
+  width: 60%;
+  overflow-y: scroll;
+}
+
+.right {
+  position: fixed;
+  width: 40%;
+  right: 0;
+  bottom: 0;
+  top: 70px;
+}
+
+@media screen and (max-width:500px) {
+  .right {
+    display:none;
+  }
+  .left {
+    width: 100%;
+  }
+}
+// end
+
+// start fixed header
+.header {
+  position: fixed;
+  top:70px;
+  background-color:#ECEBE4;
+  width:60%;
+  padding:10px 0px;
+}
+// end
+
+// start header
+.searchbar-index-annonces {
+  display:inline-block;
+}
+
+.header-left {
+  display:inline-block;
+  font-size:16px;
+}
+//end
+
+
+.content {
+  padding:0px 20px;
+}
