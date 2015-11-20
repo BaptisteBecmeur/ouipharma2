@@ -9,10 +9,19 @@
     <%= cl_image_tag @annonce.picture, :width => 300, :height => 200, :crop => :fill %>
   </div>
 
-  <p>
-    <%= @annonce.description %>
-  </p>
+  <div>
+    <h3>Description de la pharmacie</h3>
+      <p>
+      <%= @annonce.description %>
+      </p>
+  </div>
 
+  <div>
+    <h3>Elements financiers</h3>
+      <p>Chiffre d'affaires des 12 derniers mois : <%= @annonce.turnover %></p>
+      <p>Marge brute : <%= @annonce.margin %>%</p>
+      <p>Masse salariale : <%= @annonce.payroll %>€</p>
+  </div>
 
   <div>
     <%= render 'messages/new_message_form' %>

@@ -9,13 +9,13 @@
 @import "font-awesome";
 
 // Your CSS
-@import "layout/index";
 @import "components/index";
 @import "pages/index";
+@import "layout/index";
 @import "vendor/index";
 
 .jumbo {
-  background-image: url('./Pharma.jpg');
+  background-image: image-url("Pharma.jpg");
   background-position: center;
   position:relative;
   &-filter {
