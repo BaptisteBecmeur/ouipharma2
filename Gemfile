@@ -30,7 +30,7 @@ group :development, :test do
   gem 'quiet_assets'
   gem 'pry-byebug'
   gem 'pry-rails'
-  gem 'spring'
+  # gem 'spring'
 end
 
 group :production do
