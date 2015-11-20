@@ -1,52 +1,54 @@
 <% if @annonces.size > 0 %>
-<div class="flex">
-  <div class="left">
-    <div class="header text-center">
-      <div class="header-left">
-        <% if @search_city %>
-        Recherche pour <strong><%= @search_city %></strong>
-        <% end %>
-      </div>
-      <div class="searchbar-index-annonces">
-        <%= simple_form_for :search, :html => { :class => 'form-inline' }, url: annonces_path, method: :get do |f| %>
-        <%= f.input :city, placeholder: 'Faire une nouvelle recherche', class: 'placeholder-font', label: false, :input_html => { :size => 15} %>
-        <%= f.submit "Rechercher", class: 'btn btn-primary' %>
-        <% end %>
-      </div>
+  <div class="header text-center">
+    <div class="header-left">
+      <% if @search_city %>
+      Recherche pour <strong><%= @search_city %></strong>
+      <% end %>
     </div>
-    <div class="content">
-      <% @annonces.each do |annonce|%>
-        <%= link_to annonce_path(annonce) do %>
-          <h3><%= annonce.title %></h3>
-        <% end %>
-      <h2><%= annonce.turnover %>€</h2>
-
-
-        <%= link_to annonce_path(annonce) do %>
-          <%= cl_image_tag annonce.picture, :width => 350, :height => 200, :crop => :fill %>
-        <% end %>
-
-      <p>
-
-        <%= annonce.description %>
-      </p>
-      <hr>
+    <div class="searchbar-index-annonces">
+      <%= simple_form_for :search, :html => { :class => 'form-inline' }, url: annonces_path, method: :get do |f| %>
+      <%= f.input :city, placeholder: 'Faire une nouvelle recherche', class: 'placeholder-font', label: false, :input_html => { :size => 15} %>
+      <%= f.submit "Rechercher", class: 'btn btn-primary' %>
       <% end %>
     </div>
   </div>
-  <div class="right">
-    <div id="map" style="width: 100%; height: 600px;"></div>
-  </div>
-</div>
-<% else %>
-<div class="else text-center">
-  <h2>Pas de résultat pour cette recherche, essaye encore</h2>
-  <%= simple_form_for :search, :html => { :class => 'form-inline' }, url: annonces_path, method: :get do |f| %>
-  <%= f.input :city, placeholder: 'Faire une nouvelle recherche', class: 'placeholder-font', label: false, :input_html => { :size => 40} %>
-  <%= f.submit "Rechercher", class: 'btn btn-primary' %>
 
-  <% end %>
-</div>
+  <div class="flex">
+    <div class="left">
+
+      <div class="content">
+        <% @annonces.each do |annonce|%>
+        <%= link_to annonce_path(annonce) do %>
+          <h3><%= annonce.title %></h3>
+        <% end %>
+        <h2><%= annonce.turnover %>€</h2>
+
+
+        <%= link_to annonce_path(annonce) do %>
+        <%= cl_image_tag annonce.picture, :width => 350, :height => 200, :crop => :fill %>
+        <% end %>
+
+        <p>
+
+          <%= annonce.description %>
+        </p>
+        <hr>
+        <% end %>
+      </div>
+    </div>
+    <div class="right">
+      <div id="map" style="width: 100%; height: 600px;"></div>
+    </div>
+  </div>
+<% else %>
+  <div class="else text-center">
+    <h2>Pas de résultat pour cette recherche, essaye encore</h2>
+    <%= simple_form_for :search, :html => { :class => 'form-inline' }, url: annonces_path, method: :get do |f| %>
+    <%= f.input :city, placeholder: 'Faire une nouvelle recherche', class: 'placeholder-font', label: false, :input_html => { :size => 40} %>
+    <%= f.submit "Rechercher", class: 'btn btn-primary' %>
+
+    <% end %>
+  </div>
 <% end %>
 
 
