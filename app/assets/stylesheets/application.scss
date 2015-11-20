@@ -15,7 +15,7 @@
 @import "vendor/index";
 
 .jumbo {
-  background-image: url('./Pharma.jpg');
+  background-image: image-url("Pharma.jpg");
   background-position: center;
   position:relative;
   &-filter {
