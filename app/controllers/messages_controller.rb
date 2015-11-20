@@ -22,6 +22,7 @@ class MessagesController < ApplicationController
   def create
     @message = current_user.messages.new(message_params) #params[:message]
     @message.annonce = @annonce
+    # TODO : add conversation n:n table
     @message.save
     redirect_to annonce_messages_path()
   end
@@ -41,4 +42,5 @@ class MessagesController < ApplicationController
   def message_params
     params.require(:message).permit(:content)
   end
+
 end
