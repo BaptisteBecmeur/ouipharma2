@@ -2,7 +2,7 @@
 <div class="container">
   <div class="title text-center">
     <h1><%= @annonce.title %></h1>
-    <h2><%= @annonce.turnover %></h2>
+    <h2><%= @annonce.turnover %>€</h2>
   </div>
 
   <div class="picture-annonce">
@@ -18,7 +18,7 @@
 
   <div>
     <h3>Elements financiers</h3>
-      <p>Chiffre d'affaires des 12 derniers mois : <%= @annonce.turnover %></p>
+      <p>Chiffre d'affaires des 12 derniers mois : <%= @annonce.turnover %>€</p>
       <p>Marge brute : <%= @annonce.margin %>%</p>
       <p>Masse salariale : <%= @annonce.payroll %>€</p>
   </div>

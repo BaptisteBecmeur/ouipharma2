@@ -1,5 +1,3 @@
-
-
 <% if @annonces.size > 0 %>
 <div class="flex">
   <div class="left">
@@ -18,10 +16,18 @@
     </div>
     <div class="content">
       <% @annonces.each do |annonce|%>
-      <h3><%= annonce.title %></h3>
+        <%= link_to annonce_path(annonce) do %>
+          <h3><%= annonce.title %></h3>
+        <% end %>
       <h2><%= annonce.turnover %>€</h2>
-      <%= cl_image_tag annonce.picture, :width => 350, :height => 200, :crop => :fill %>
+
+
+        <%= link_to annonce_path(annonce) do %>
+          <%= cl_image_tag annonce.picture, :width => 350, :height => 200, :crop => :fill %>
+        <% end %>
+
       <p>
+
         <%= annonce.description %>
       </p>
       <hr>
